@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Griffin Page</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="contact.js"></script>
+</head>
+
+<body>
+    <script src="https://unpkg.com/vue@2.5.3/dist/vue.js"></script>
+    <div id="container" class="container">
+        <div class="top">
+            <header>
+                <h1>
+                    Griffin Page
+                </h1>
+            </header>
+            <div class="nav" id="nav">
+                <a @click="viewAbout = !viewAbout" href="#aboutme">About Me</a>
+                <a @click="viewResume = !viewResume" href="#resume">Resume</a>
+                <a @click="viewPhotos = !viewPhotos" href="#photos">Photos</a>
+                <a @click="viewContact = !viewContact" href="#contact">Contact</a>
+            </div>
+        </div>
+
+        <div v-if="viewAbout" class="content" id="aboutme">
+            <h2 @click="viewAbout = !viewAbout">About Me</h2>
+            <p>Welcome! My name is Griffin Page and I’m currently pursuing an MS in Software Development from Boston
+                University’s Metropolitan College. I’m currently enrolled in Web Application Development (MET CS 601).
+                Outside of school, I work in the IT department at a large university. I also love snowboarding, and try
+                to get out on the slopes as much as possible. </p>
+        </div>
+
+        <div v-if="viewResume" class="content" id="resume">
+            <h2 @click="viewResume = !viewResume">Resume</h2>
+            <h3>Education</h3>
+            <ul>
+                <li>BS Information Technology - UMASS Lowell</li>
+                <li>MS Software Development - Boston University (2023)</li>
+            </ul>
+            <h3>Work</h3>
+            <h4>Senior IT Tech</h4>
+            <ul>
+                <li>Provide Tier 2 Support</li>
+                <li>Deploy updates.</li>
+                <li>Design and deploy software configuration for workstations.</li>
+            </ul>
+            <h4>Skills</h4>
+            <ul>
+                <li>System Center Configuration Manager</li>
+                <li>Microsoft Endpoint Manager/Intune</li>
+                <li>Microsoft Autopilot</li>
+            </ul>
+            <h4>Programming and Scripting</h4>
+            <ul>
+                <li>Powershell</li>
+                <li>Batch</li>
+                <li>Bash</li>
+                <li>Java</li>
+                <li>Python</li>
+            </uL>
+        </div>
+
+        <div v-if="viewPhotos" class="content" id="photos">
+            <h2 @click="viewPhotos = !viewPhotos">Photos</h2>
+            <div class="gallery">
+                <img src="./img/1.jpg" alt="Christmas Break Rush" />
+                <img src="./img/2.jpg" alt="Christmas Break Rush" />
+                <img src="./img/3.jpg" alt="Christmas Break Rush" />
+                <img src="./img/4.jpg" alt="Christmas Break Rush" />
+                <img src="./img/5.jpg" alt="Christmas Break Rush" />
+                <img src="./img/6.jpg" alt="Christmas Break Rush" />
+            </div>
+        </div>
+
+        <div v-show="viewContact" class="content" id="contact">
+            <h2 @click="viewContact = !viewContact">Contact</h2>
+            <form onsubmit="return validate()" action="https://formsubmit.co/gdpage@bu.edu" method="POST">
+                <label for="name" id="nameLabel">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your full name.">
+
+                <label for="email" id="emailLabel">eMail:</label>
+                <input type="text" id="email" name="email" placeholder="Your eMail address.">
+
+                <label for="message" id="messageLabel">Enter your Message:</label>
+                <textarea id="message" name="message" placeholder="Your Message. At least 10 characters."
+                    style="height:200px"></textarea>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+
+        <div class="bottom">
+            <footer>
+
+            </footer>
+        </div>
+    </div>
+    <!--Vue to make collapsible/hidable.-->
+    <script>
+        var app = new Vue({
+            el: '#container',
+            data: {
+                viewResume: false,
+                viewPhotos: false,
+                viewContact: false,
+                viewAbout: true
+            }
+        })
+    </script>
+</body>
+
+</html>
